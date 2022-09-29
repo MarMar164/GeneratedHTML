@@ -1,5 +1,5 @@
 const Intern = require("../lib/Intern")
-
+const Employee = require("../lib/Employee");
 
 describe('Intern', () => {
 
@@ -16,12 +16,16 @@ describe('Intern', () => {
         })
     })
 
-    describe('gitName', () => {
-
+    describe('gitSchoolName', () => {
+        const testSchoolName = "SMU";
+        const empl = new Employee(testSchoolName);
+        expect(empl.getRole()).toBe(testSchoolName);
     })
 
     describe('gitRole', () => {
-
+        const testRole = "Intern";
+        const empl = new Employee(testRole);
+        expect(empl.getRole()).toBe(testRole);
     })
 
 

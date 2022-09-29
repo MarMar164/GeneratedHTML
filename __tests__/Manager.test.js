@@ -1,3 +1,4 @@
+const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager")
 
 
@@ -16,12 +17,16 @@ describe('Manager', () => {
         })
     })
 
-    describe('gitName', () => {
-
+    describe('gitOfficeNum', () => {
+        const testOfficeNum = 215;
+        const e = new Employee(testOfficeNum);
+        expect(e.getOfficeNum()).toEqual(testOfficeNum);
     })
 
     describe('gitRole', () => {
-
+        const testRole = "Manager"
+        const empl = new Employee(testRole);
+        expect(empl.getRole()).toBe(testRole);
     })
 
 
