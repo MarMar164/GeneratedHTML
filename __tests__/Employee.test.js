@@ -23,7 +23,7 @@ describe('Employee', () => {
     })
 
     describe('getRole', () => {
-        const testRole = Employee;
+        const testRole = "Employee";
         const empl = new Employee(testRole);
         expect(empl.getRole()).toBe(testRole);
     })
