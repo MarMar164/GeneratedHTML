@@ -16,7 +16,6 @@ for (let i = 0; i < team.length; i++) {
           <p class="card-text">${employee.getId()}</p>
           <p class="card-text">${employee.getEmail()}</p>
           <p class="card-text">${employee.getOfficeNum()}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>`
     }
@@ -29,7 +28,6 @@ for (let i = 0; i < team.length; i++) {
           <p class="card-text">${employee.getId()}</p>
           <p class="card-text">${employee.getEmail()}</p>
           <p class="card-text">${employee.getGithub()}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>`
     }
@@ -42,7 +40,6 @@ for (let i = 0; i < team.length; i++) {
           <p class="card-text">${employee.getId()}</p>
           <p class="card-text">${employee.getEmail()}</p>
           <p class="card-text">${employee.getSchoolName()}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>`
     }
@@ -63,6 +60,9 @@ module.exports = team => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">Team</a>
+</nav>
     ${buildTeam(team)}
 </body>
 </html>
