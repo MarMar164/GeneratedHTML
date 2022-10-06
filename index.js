@@ -2,6 +2,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
+// import inquirer from "inquirer";
 const fs = require("fs");
 const temp = require("./src/template.js");
 const { create } = require("domain");
@@ -37,7 +38,7 @@ function buildTeam() {
 
 //for if teams have mutipul managers
 function createManagers() {
-    inquirer.createPromptModule([
+    inquirer.prompt([
         {
             type: 'input',
             message: 'Whats the Name of the Manager?',
@@ -59,15 +60,15 @@ function createManagers() {
             name: 'mOffice',
         },
     ]).then(answers => {
-        const namager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.mOffice);
+        const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.mOffice);
         team.push(manager);
-
+        buildTeam()
 
     })
 }
 
 function createManager() {
-    inquirer.createPromptModule([
+    inquirer.prompt([
         {
             type: 'input',
             message: 'Whats the Name of the Manager?',
@@ -89,7 +90,7 @@ function createManager() {
             name: 'mOffice',
         },
     ]).then(answers => {
-        const namager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.mOffice);
+        const manager = new Manager(answers.mName, answers.mId, answers.mEmail, answers.mOffice);
         team.push(manager);
         buildTeam()
 
@@ -97,7 +98,7 @@ function createManager() {
 }
 
 function createIntern() {
-    inquirer.createPromptModule([
+    inquirer.prompt([
         {
             type: 'input',
             message: 'Whats the Name of the Intern?',
@@ -119,9 +120,9 @@ function createIntern() {
             name: 'iSchool',
         },
     ]).then(answers => {
-        const interns = new Intern(answers.iName, answers.iId, answers.iEmail, answers.iSchool);
+        const intern = new Intern(answers.iName, answers.iId, answers.iEmail, answers.iSchool);
         team.push(intern);
-
+        buildTeam()
         /*
             const html = temp(team);
             fs.writeFile("./disy/index.html", html, 'utf-8');
@@ -130,7 +131,7 @@ function createIntern() {
 }
 
 function createEngineer() {
-    inquirer.createPromptModule([
+    inquirer.prompt([
         {
             type: 'input',
             message: 'Whats the Name of the Engineer?',
@@ -149,12 +150,12 @@ function createEngineer() {
         {
             type: 'input',
             message: 'Whats the github username of the Engineer?',
-            name: 'eSchool',
+            name: 'eGithub',
         },
     ]).then(answers => {
-        const interns = new Intern(answers.eName, answers.eId, answers.eEmail, answers.eSchool);
+        const engineer = new Engineer(answers.eName, answers.eId, answers.eEmail, answers.eGithub);
         team.push(engineer);
-
+        buildTeam()
         /*
             const html = temp(team);
             fs.writeFile("./disy/index.html", html, 'utf-8');
@@ -164,7 +165,11 @@ function createEngineer() {
 
 function quitOut() {
     const html = temp(team);
-    fs.writeFile("./dist/index.html", html, 'utf-8');
+    fs.writeFile("./dist/index.html", html, function(err){
+        if (err)  console.log(err)
+        
+        console.log("wrote html")
+    });
 }
 
 createManager();
